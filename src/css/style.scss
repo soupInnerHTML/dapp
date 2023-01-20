@@ -1,0 +1,93 @@
+$accent: #08D899;
+
+body, p {
+  margin: 0;
+}
+button {
+  cursor: pointer;
+}
+.app {
+  background: url("../assets/images/bg.png");
+  background-size: cover;
+  animation: scroll linear 10s infinite alternate;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 26px 70px;
+  border-bottom: 1px solid #CDD2DD;
+  backdrop-filter: blur(8px);
+  background: rgba(255, 255, 255, 0.1);
+  &__connect-wallet {
+    font-family: 'Manrope', sans-serif;
+    background: $accent;
+    color: #fff;
+    border: none;
+    padding: 12px 32px;
+    border-radius: 8px;
+    box-shadow: 0 8px 16px rgba(8, 216, 153, 0.2);
+    font-size: 18px;
+    line-height: 24px;
+    position: absolute;
+    right: 70px;
+  }
+  &__wallet {
+    font-family: 'Manrope', sans-serif;
+    border-radius: 20px;
+    background: #fff;
+    padding: 10px 12px;
+    gap: 8px;
+    display: flex;
+    align-items: center;
+    color: $accent;
+    border: 0;
+    position: absolute;
+    right: 70px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.05);
+  }
+}
+
+.orders {
+  flex-grow: 1;
+}
+
+.footer {
+  background: #F0F5F5;
+  border-top: 1px solid #CDD2DD;
+  padding: 50px 70px 40px;
+  &__content {
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    &__links {
+      width: 33.3%;
+    }
+    &__link {
+      color: #676767;
+      display: block;
+      text-decoration: none;
+      font-family: 'Gilroy', sans-serif;
+      font-size: 16px;
+      line-height: 16px;
+      margin-bottom: 16px;
+    }
+    &__socials {
+      width: 33.3%;
+      display: flex;
+      justify-content: end;
+      gap: 30px;
+    }
+  }
+  &__copyright {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    line-height: 22px;
+    text-align: center;
+    color: #959596;
+  }
+}
