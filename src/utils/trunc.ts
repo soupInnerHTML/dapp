@@ -1,8 +1,6 @@
 export default function trunc (fullStr: string, strLen: number, separator = '...') {
   if (fullStr.length <= strLen) return fullStr;
 
-  separator = separator || '...';
-
   const sepLen = separator.length,
     charsToShow = strLen - sepLen,
     frontChars = Math.ceil(charsToShow/2),
