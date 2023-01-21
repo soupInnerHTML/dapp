@@ -16,24 +16,29 @@ const Header: React.FC = () => {
   const [signer, setSigner] = useState<Signer | null>(null)
 
   useEffect(() => {
-    if(wallet) {
+    if(wallet && ethereum) {
       ethereum.on('accountsChanged', (accounts) => setWallet(accounts[0]));
       ethereum.on('chainChanged', () => alert('network changed'))
-    }
 
-    return () => ethereum.removeAllListeners()
+      return () => ethereum.removeAllListeners()
+    }
   }, [wallet])
 
   async function connectWallet() {
     if(ethereum) {
-      const provider = new ethers.providers.Web3Provider(ethereum);
-      setSigner(provider.getSigner());
-      const accounts = await provider.send('eth_requestAccounts', [])
-      setContract(getContract(provider))
-      setWallet(accounts[0])
+      try {
+        const provider = new ethers.providers.Web3Provider(ethereum);
+        setSigner(provider.getSigner());
+        const accounts = await provider.send('eth_requestAccounts', [])
+        setContract(getContract(provider))
+        setWallet(accounts[0])
+      }
+      catch (e: any) {
+        alert(e.message)
+      }
     }
     else {
-      alert('Please install Metamask')
+      alert('Please install MetaMask')
     }
   }
   const parsedWalletName = useMemo(() => wallet && trunc(wallet, 14), [wallet]);
